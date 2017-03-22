@@ -57,9 +57,14 @@ public class SachbearbeiterS {
 	}
 	
 	
-	public boolean isLoggedIn(){
+	public boolean isSbaLoggedIn(){
 		
-		return (sba != null) ? true : false;//returns true if sba not null
+		return ((sba != null) && sba.getRole().equals("sba")) ? true : false;//returns true if sba not null and sba.role == sba
+	}
+	
+	public boolean isAdminLoggedIn(){
+		
+		return ((sba != null) && sba.getRole().equals("admin")) ? true : false;//returns true if sba not null and sba.role == admin
 	}
 	
 	

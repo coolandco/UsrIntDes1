@@ -13,6 +13,13 @@ public class Sachbearbeiter {
 	//db = Database
 	private static Set<Sachbearbeiter> db = new HashSet<Sachbearbeiter>();
 	
+	public static void  setHardImplementedLoginDetails(){
+		
+		new Sachbearbeiter("leo", "sba", "abc");
+		new Sachbearbeiter("kevin", "admin", "123");
+		
+	}
+	
 	
 	/**
 	 * 
@@ -56,7 +63,7 @@ public class Sachbearbeiter {
 	public static Sachbearbeiter get(String name){
 		
 		for( Sachbearbeiter s: db){
-			if(s.name == name)
+			if(s.name.equals(name))
 				return s;
 		}
 		return null;
@@ -70,7 +77,7 @@ public class Sachbearbeiter {
 	//Name des Sba
 	private String name;
 	
-	//Role = admin oder Sachbearbeiter
+	//Role = admin oder sba
 	private String role;
 	
 	//safes Password

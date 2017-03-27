@@ -46,9 +46,11 @@ public class StartHS extends consoleHandler {
 		newBefehl();
 		
 		if(SachbearbeiterS.getInstance().isSbaLoggedIn()){//prüft ob login erfolgreich war
+			LoginAAS.getInstance().schliessen();
 			sbaAS.getInstance().öffnen();
 		}else if(SachbearbeiterS.getInstance().isAdminLoggedIn()){//prüft ob login erfolgreich war
-			sbaAS.getInstance().öffnen();
+			LoginAAS.getInstance().schliessen();
+			admAS.getInstance().öffnen();//opens up the next oberfläche
 		} else {
 			System.out.println("Login war nicht erfolgreich, bitte versuche es von vorne!");
 			öffnen();

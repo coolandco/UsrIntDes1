@@ -89,7 +89,7 @@ public class Sachbearbeiter {
 	/**
 	 * Creates instance of Sachbearbeiter and puts it into the db
 	 */
-	Sachbearbeiter(){
+	public Sachbearbeiter(){
 		name = ""; //TODO: Redundant code. Its very less, so don't worry.
 		role = "";
 		password = "";
@@ -99,12 +99,27 @@ public class Sachbearbeiter {
 	/**
 	 * Creates instance of Sachbearbeiter and puts it into the db
 	 * @param name
-	 * @param role
+	 * @param role --> "sba" or "admin"
 	 */
-	Sachbearbeiter(String name, String role, String pw){
+	
+	public Sachbearbeiter(String name, String role, String pw){
 		this.name = name;
 		this.role = role;
 		this.password = pw;
+		db.add(this);
+	}
+	
+	
+	/**
+	 * Creates instance of Sachbearbeiter and puts it into the db
+	 * @param name
+	 * @param role true--> admin | role false --> sba
+	 */
+	public Sachbearbeiter(String name, boolean role, String pw){
+		this.name = name;
+		this.role = role ? "admin" : "sba"; //if role == true --> admin
+		this.password = pw;
+		
 		db.add(this);
 	}
 	

@@ -22,11 +22,28 @@ public class sbaAS extends consoleHandler {
 
 	@Override
 	protected boolean befehl(String befehl) {
-		// TODO Auto-generated method stub
+		
+		switch (befehl){
+		case "changeUser":
+			return true;
+		case "beenden":
+			schliessen();
+			return true;
+		}
 		return false;
 	}
 	
 	public void öffnen() {
+		
+		System.out.println("");
+		System.out.println("was möchsten sie tun?");
+		System.out.println("changeUser");
+		System.out.println("beenden");
+		
+	}
+	
+	public void schliessen(){
+		
 		
 	}
 

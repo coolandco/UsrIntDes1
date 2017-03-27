@@ -34,21 +34,31 @@ public class LoginK {
 	
 	public boolean führeLoginDurch() throws Exception{
 		
-		Sachbearbeiter s = SachbearbeiterS.getInstance().getEK(name);//wenn Sachbearbeiter existiert; throws Exeption
+		try{
 		
+			Sachbearbeiter s = SachbearbeiterS.getInstance().getEK(name);//wenn Sachbearbeiter nicht existiert throws Exeption
+			
+			
+			
+			
+			if ( !(s.getPassword().equals(passwort)) )//wenn passwort nicht stimmt
+				throw new Exception("Passwort stimmt nicht mit " + name + " überein.");
+			
+			//Login anforderungen wurden geprüft
+			SachbearbeiterS.getInstance().setLogin(s);
+			
+			if(adminMode)
+				SachbearbeiterS.getInstance().switchAdminModeOn();
+			
+			return true; //if we are here, everything is right.
+			
+		} catch (Exception e) {
+			
+			
+			SachbearbeiterS.removeInstance(); // so we remove every evidence of the login
+			throw e; //but do not handle the exeption
+		}
 		
-		
-		
-		if ( !(s.getPassword().equals(passwort)) )//wenn passwort nicht stimmt
-			throw new Exception("Passwort stimmt nicht mit " + name + " überein.");
-		
-		//Login anforderungen wurden geprüft
-		SachbearbeiterS.getInstance().setLogin(s);
-		
-		if(adminMode)
-			SachbearbeiterS.getInstance().switchAdminModeOn();
-		
-		return true; //if we are here, everything is right.
 	}
 	
 	

@@ -58,7 +58,7 @@ public class LoginAAS extends consoleHandler {
 	}
 
 	
-	private void schliessen() {
+	public void schliessen() {
 		kontrolle = null;
 		removeInstance();
 	}

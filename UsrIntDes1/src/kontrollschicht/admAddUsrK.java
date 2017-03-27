@@ -36,8 +36,15 @@ public class admAddUsrK {
 		
 		try {
 		
+			try{
 			if(SachbearbeiterS.getInstance().getEK(name) != null)
 				throw new Exception("Der benutzer mit dem eingegebenen Benutzernamen existiert schon");
+			
+			}catch (Exception e){
+				//its a exception turnaround.
+				//TODO: implement another methode in sachbearbeiterS
+				//TODO: thinking mistake
+			}
 			
 			if(checkUsername() == false)
 				throw new Exception("Der eingegebene Benutzername kann nicht benutzt werden");

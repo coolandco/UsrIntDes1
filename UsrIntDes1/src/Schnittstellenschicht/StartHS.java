@@ -27,6 +27,8 @@ public class StartHS extends consoleHandler {
     }
    //################################################
 	
+    boolean ende = false;
+    
 	public static void main(String[] args) {
 		
 		Sachbearbeiter.setHardImplementedLoginDetails();//puts 2 accounts in the db
@@ -38,22 +40,27 @@ public class StartHS extends consoleHandler {
 	
 
 	private void öffnen() {
-		System.out.println();
-		System.out.println("Hallo, bitte gebe einen der Folgenden befehle ein:");		
-		System.out.println("login");
-		System.out.println("beenden");
 		
-		newBefehl();
+		while(ende == false){
 		
-		if(SachbearbeiterS.getInstance().isSbaLoggedIn()){//prüft ob login erfolgreich war
-			LoginAAS.getInstance().schliessen();
-			sbaAS.getInstance().öffnen();
-		}else if(SachbearbeiterS.getInstance().isAdminLoggedIn()){//prüft ob login erfolgreich war
-			LoginAAS.getInstance().schliessen();
-			admAS.getInstance().öffnen();//opens up the next oberfläche
-		} else {
-			System.out.println("Login war nicht erfolgreich, bitte versuche es von vorne!");
-			öffnen();
+			System.out.println();
+			System.out.println("Hallo, bitte gebe einen der Folgenden befehle ein:");		
+			System.out.println("login");
+			System.out.println("beenden");
+			
+			newBefehl();
+			
+			if(SachbearbeiterS.getInstance().isSbaLoggedIn()){//prüft ob login erfolgreich war
+				LoginAAS.getInstance().schliessen();
+				sbaAS.getInstance().öffnen();
+			}else if(SachbearbeiterS.getInstance().isAdminLoggedIn()){//prüft ob login erfolgreich war
+				System.out.println("öffneADM");
+				LoginAAS.getInstance().schliessen();
+				admAS.getInstance().öffnen();//opens up the next oberfläche
+			} else {
+				System.out.println("Login war nicht erfolgreich, bitte versuche es von vorne!");
+				öffnen();
+			}
 		}
 		
 		

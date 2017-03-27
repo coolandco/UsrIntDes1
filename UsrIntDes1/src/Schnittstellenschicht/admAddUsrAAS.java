@@ -26,18 +26,39 @@ public class admAddUsrAAS extends consoleHandler {
     
 	@Override
 	protected boolean befehl(String befehl) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	
-	
-	public void öffnen(){
+
+
+	public void öffnen() {
+		kontrolle = new admAddUsrK();
+		
+		System.out.println();
+		System.out.println("Bitte geben Sie den Namen ein:");
+		kontrolle.enterName(newRequest());
+		
+		System.out.println("Bitte geben Sie das Passwort ein:");
+		kontrolle.enterPassword(newRequest());
+		
+		System.out.println("Möchten Sie den Benutzer als Admin anlegen? y/n");
+		kontrolle.cooseAdmin(newRequest());
+		
+		try {
+			kontrolle.applyAddUser();
+		} catch (Exception e) {
+			System.out.println("FEHLER:");
+			System.out.println(e.getMessage());
+			schliessen();
+		}
+		
 		
 	}
 	
-	public void schließen() {
-		
-		
+	public void schliessen() {
+		kontrolle = null;
+		removeInstance();
 	}
     
     

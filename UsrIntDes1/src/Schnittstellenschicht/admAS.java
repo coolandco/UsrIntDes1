@@ -1,5 +1,7 @@
 package Schnittstellenschicht;
 
+import kontrollschicht.SachbearbeiterS;
+
 public class admAS extends consoleHandler {
 	
 	//################################################
@@ -20,14 +22,14 @@ public class admAS extends consoleHandler {
     }
    //################################################
 	
-    
+    private boolean ende = false;
 	
 	@Override
 	protected boolean befehl(String befehl) {
 		
 		switch (befehl){
 		case "addUser":
-			
+			admAddUsrAAS.getInstance().öffnen();
 			return true;
 		case "removeUser":
 			
@@ -47,16 +49,23 @@ public class admAS extends consoleHandler {
 	
 	public void öffnen() {
 		
-		System.out.println("");
-		System.out.println("was möchsten sie tun?");
-		System.out.println("addUser");
-		System.out.println("removeUser");
-		System.out.println("changeUser");
-		System.out.println("beenden");
+		while(ende == false) {
+			System.out.println("");
+			System.out.println("was möchsten sie tun?");
+			System.out.println("addUser");
+			System.out.println("removeUser");
+			System.out.println("changeUser");
+			System.out.println("beenden");
+			
+			newBefehl();
+		}
+		
 	}
 	
 	public void schliessen(){
-		
+		SachbearbeiterS.removeInstance(); //abmelden
+		ende = true;
+		removeInstance();
 		
 	}
 

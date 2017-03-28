@@ -42,6 +42,16 @@ public class SachbearbeiterS {
 	}
 	
 	
+	public boolean EKexists(String name) throws Exception {
+		Sachbearbeiter s = Sachbearbeiter.get(name);
+		
+		if(s != null)
+			return true;
+		else
+			return false;
+	}
+	
+	
 	public void setLogin(Sachbearbeiter s){//führt den login durch
 		sba = s;	
 	}

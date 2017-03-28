@@ -54,7 +54,6 @@ public class StartHS extends consoleHandler {
 				LoginAAS.getInstance().schliessen();
 				sbaAS.getInstance().öffnen();
 			}else if(SachbearbeiterS.getInstance().isAdminLoggedIn()){//prüft ob login erfolgreich war
-				System.out.println("öffneADM");
 				LoginAAS.getInstance().schliessen();
 				admAS.getInstance().öffnen();//opens up the next oberfläche
 			} else {

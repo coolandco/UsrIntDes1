@@ -32,7 +32,7 @@ public class admAS extends consoleHandler {
 			admAddUsrAAS.getInstance().öffnen();
 			return true;
 		case "removeUser":
-			
+			admDelUsrAAS.getInstance().öffnen();
 			return true;
 		case "changeUser":
 			

@@ -134,6 +134,21 @@ public class Sachbearbeiter {
 		setRole(s.getRole());
 		setPassword(s.getPassword());
 	}
+	
+	/**
+	 * deletes the instance from the database
+	 */ 
+	public void delete(){
+		
+		db.remove(this);
+		
+	}
+	
+	@Override
+	public String toString(){
+		
+		return name;
+	}
 
 
 

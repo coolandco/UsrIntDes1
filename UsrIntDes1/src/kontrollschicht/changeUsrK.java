@@ -1,5 +1,5 @@
 package kontrollschicht;
 
-public class ChangeUsrK {
+public class changeUsrK {
 
 }

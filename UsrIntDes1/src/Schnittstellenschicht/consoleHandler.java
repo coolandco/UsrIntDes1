@@ -20,7 +20,7 @@ public abstract class consoleHandler {
 	
 	private static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
-	public void newBefehl() {
+	protected void newBefehl() {
 		
 //		System.out.println(welcomeMessage);//zeigt die Startaufforderung
 		
@@ -46,7 +46,7 @@ public abstract class consoleHandler {
 	 * 
 	 * @return returns a string that has been entered by the user into the console
 	 */
-	public String newRequest() {
+	protected String newRequest() {
 		try {
 			return in.readLine();
 		} catch (IOException e) {

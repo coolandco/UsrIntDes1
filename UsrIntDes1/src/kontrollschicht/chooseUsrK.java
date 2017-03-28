@@ -10,7 +10,7 @@ public class chooseUsrK {
 	private Sachbearbeiter choosenUser;
 	
 	
-	
+	//TODO: for admins and users diferent methodes
 	public String[] getPossibleUserNames(){
 		
 		return Sachbearbeiter.getAllNames();

@@ -26,7 +26,7 @@ public class sbaAS extends consoleHandler {
 		switch (befehl){
 		case "changeUser":
 			return true;
-		case "beenden":
+		case "abmelden":
 			schliessen();
 			return true;
 		}
@@ -38,7 +38,7 @@ public class sbaAS extends consoleHandler {
 		System.out.println("");
 		System.out.println("was möchsten sie tun?");
 		System.out.println("changeUser");
-		System.out.println("beenden");
+		System.out.println("abmelden");
 		
 	}
 	

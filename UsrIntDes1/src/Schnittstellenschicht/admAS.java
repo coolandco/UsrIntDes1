@@ -37,7 +37,7 @@ public class admAS extends consoleHandler {
 		case "changeUser":
 			
 			return true;
-		case "beenden":
+		case "abmelden":
 			schliessen();
 			return true;
 		}
@@ -55,7 +55,7 @@ public class admAS extends consoleHandler {
 			System.out.println("addUser");
 			System.out.println("removeUser");
 			System.out.println("changeUser");
-			System.out.println("beenden");
+			System.out.println("abmelden");
 			
 			newBefehl();
 		}

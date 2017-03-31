@@ -4,9 +4,7 @@ import java.util.HashMap;
 import entityClass.Sachbearbeiter;
 
 public class chooseUsrK {
-	
-	private HashMap<String,Sachbearbeiter> anzeige = new HashMap<String,Sachbearbeiter>();
-	
+		
 	private Sachbearbeiter choosenUser;
 	
 	

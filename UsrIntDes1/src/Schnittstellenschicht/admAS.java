@@ -35,7 +35,7 @@ public class admAS extends consoleHandler {
 			admDelUsrAAS.getInstance().öffnen();
 			return true;
 		case "changeUser":
-			
+			changeUsrAS.getInstance().öffnen();
 			return true;
 		case "abmelden":
 			schliessen();

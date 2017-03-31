@@ -12,18 +12,18 @@ public class LoginK {
 	
 	
 	public void enterName(String name){
-
+		//TODO: implement string checks, maybe static methodes in another class
 		this.name = name;	
 	}
 	
 	
 	public void enterPassword(String pw){
-		
+		//TODO: implement string checks, maybe static methodes in another class
 		this.passwort = pw;
 	}
 	
 	public void cooseAdmin(String chooseAdmin){
-		
+		//TODO: implement string checks, maybe static methodes in another class
 		if(chooseAdmin.equalsIgnoreCase("y"))
 			adminMode = true;
 		else

@@ -69,12 +69,15 @@ public class SachbearbeiterS {
 	
 	public boolean isSbaLoggedIn(){
 		
-		return ((sba != null) && sba.getRole().equals("sba")) ? true : false;//returns true if sba not null and sba.role == sba
+		//return ((sba != null) && sba.getRole().equals("sba")) ? true : false;//returns true if sba not null and sba.role == sba
+		
+		return ((sba != null) && adminMode == false ) ? true : false;//returns true if sba not null and adminMode aus
 	}
 	
 	public boolean isAdminLoggedIn(){
 		
-		return ((sba != null) && sba.getRole().equals("admin")) ? true : false;//returns true if sba not null and sba.role == admin
+		//return ((sba != null) && sba.getRole().equals("admin")) ? true : false;//returns true if sba not null and sba.role == admin
+		return ((sba != null) && adminMode == true) ? true : false;//returns true if sba not null and adminMode ein
 	}
 	
 	

@@ -1,6 +1,8 @@
 package Schnittstellenschicht;
 
 
+import java.util.ArrayList;
+
 import kontrollschicht.chooseUsrK;
 
 public class chooseUsrAS extends consoleHandler {
@@ -25,7 +27,7 @@ public class chooseUsrAS extends consoleHandler {
 
     private chooseUsrK kontrolle;
     
-    private boolean ende = false;
+    private boolean markAdmins = false;
     
     
 	@Override
@@ -40,11 +42,18 @@ public class chooseUsrAS extends consoleHandler {
 		
 		while(kontrolle.getChoosenUserName() == null){//as long as nothing is choosen
 			
-			for(String s : kontrolle.getPossibleUserNames())//print all user names
-				System.out.println(s);
+			ArrayList<String> admins = kontrolle.getAdminNames();
+			
+			for(String s : kontrolle.getPossibleUserNames()) {//print all user names
+				if(markAdmins || admins.contains(s))//marks the addmins
+					System.out.println(s + "*");
+				else
+					System.out.println(s);
+			}
 			
 			System.out.println();
 			System.out.println("Bitte geben Sie einen Namen oder \"abbrechen\" ein:");
+			System.out.println("Alle admins wurden mit einem * markiert");
 			
 			String antwort = newRequest();
 			
@@ -63,6 +72,14 @@ public class chooseUsrAS extends consoleHandler {
 			}
 						
 		}
+		
+	}
+	
+	
+	public void öffnen(boolean markAdmins){
+		this.markAdmins = markAdmins;
+		
+		öffnen();
 		
 	}
 	

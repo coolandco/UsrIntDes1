@@ -59,6 +59,18 @@ public class changeUsrK {
 		}
 	}
 	
+	public boolean isAllowedToChange() throws Exception {
+		prüfeIsUserChoosen();//throws Exception if no user is choosen
+		
+		try {
+			prüfeRechte();
+		} catch (Exception e){
+			throw new Exception("Sie dürfen den ausgewählten Benutzer nicht ändern");
+		}
+		
+		return true;//everythings correct
+	}
+	
 	//HELPERS#####################################################
 	
 	private void prüfeIsUserChoosen() throws Exception{
@@ -68,7 +80,7 @@ public class changeUsrK {
 	
 	private void prüfeRechte() throws Exception{
 		//throws if s.o. wants to change admin and a sba is logged on
-		if(choosenUser.getRole().equals("Admin") && SachbearbeiterS.getInstance().isSbaLoggedIn())
+		if(choosenUser.getRole().equals("admin") && SachbearbeiterS.getInstance().isSbaLoggedIn())
 			throw new Exception("Fehlende Berechtigung");
 	}
 	

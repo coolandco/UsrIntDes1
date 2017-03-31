@@ -55,7 +55,7 @@ public class changeUsrAS extends consoleHandler {
 		
 		System.out.println("Wählen Sie erst einen benutzer, den Sie ändern wollen:");
 		
-		chooseUsrAS.getInstance().öffnen();//lässt den benutzer auswählen
+		chooseUsrAS.getInstance().öffnen(true);//lässt den benutzer auswählen
 		
 		String choosenUser = chooseUsrAS.getInstance().getChoosenUser();
 		
@@ -64,8 +64,16 @@ public class changeUsrAS extends consoleHandler {
 			schliessen();
 			return;
 		}
-		
+				
 		kontrolle.setUser(choosenUser);
+		
+		try {
+			kontrolle.isAllowedToChange();//would throw exeption
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			schliessen();
+			return;
+		}
 		
 		while(ende == false) {//menü, für was geändert werden soll
 			System.out.println("");
@@ -96,6 +104,8 @@ public class changeUsrAS extends consoleHandler {
 			System.out.println("geben Sie einen neuen Namen ein:");
 			kontrolle.setNewName(newRequest());
 			
+			System.out.println("Name geändert");
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ende = true;
@@ -109,6 +119,8 @@ public class changeUsrAS extends consoleHandler {
 		try {
 			System.out.println("geben Sie einen neues Passwort ein für Benutzer " + kontrolle.getCurrentName() + ":");
 			kontrolle.setNewPassword(newRequest());
+			
+			System.out.println("Passwort geändert");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -125,6 +137,8 @@ public class changeUsrAS extends consoleHandler {
 					kontrolle.getCurrentName() + " ist " + kontrolle.getCurrentRole());
 			System.out.println("Bitte geben Sie \"y\" für admin und \"n\" für Sachbearbeiter ein");
 			kontrolle.setNewRole(newRequest());
+			
+			System.out.println("Rolle geändert");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

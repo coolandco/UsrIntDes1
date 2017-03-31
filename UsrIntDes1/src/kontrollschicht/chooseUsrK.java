@@ -1,5 +1,6 @@
 package kontrollschicht;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import entityClass.Sachbearbeiter;
 
@@ -28,6 +29,27 @@ public class chooseUsrK {
 	
 	public String getChoosenUserName() {
 		return choosenUser == null ? null :choosenUser.toString();//returns null if no user hase been choosen yet
+	}
+	
+	
+	public ArrayList<String> getAdminNames(){
+		
+		ArrayList<String> admins = new ArrayList<String>();
+		
+		for(String s : Sachbearbeiter.getAllNames()){
+			
+			Sachbearbeiter sachb = Sachbearbeiter.get(s);
+			
+			if(sachb == null || ! sachb.getRole().equals("admin")) //if not found or not admin
+				continue;
+			else
+				admins.add(sachb.getName());
+				
+		}
+		
+		
+		return admins;
+		
 	}
 
 }

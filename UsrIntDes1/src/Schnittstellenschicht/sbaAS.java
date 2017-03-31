@@ -1,5 +1,7 @@
 package Schnittstellenschicht;
 
+import kontrollschicht.SachbearbeiterS;
+
 public class sbaAS extends consoleHandler {
 	
 	//################################################
@@ -20,11 +22,14 @@ public class sbaAS extends consoleHandler {
     }
    //################################################
 
+    private boolean ende = false;
+    
 	@Override
 	protected boolean befehl(String befehl) {
 		
 		switch (befehl){
 		case "changeUser":
+			changeUsrAS.getInstance().öffnen();
 			return true;
 		case "abmelden":
 			schliessen();
@@ -35,14 +40,21 @@ public class sbaAS extends consoleHandler {
 	
 	public void öffnen() {
 		
-		System.out.println("");
-		System.out.println("was möchsten sie tun?");
-		System.out.println("changeUser");
-		System.out.println("abmelden");
+		while(ende == false){
+			System.out.println("");
+			System.out.println("was möchsten sie tun?");
+			System.out.println("changeUser");
+			System.out.println("abmelden");
+			newBefehl();
+		}
 		
 	}
 	
 	public void schliessen(){
+		
+		SachbearbeiterS.removeInstance(); //abmelden
+		ende = true;
+		removeInstance();
 		
 		
 	}

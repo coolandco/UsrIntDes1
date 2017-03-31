@@ -64,6 +64,8 @@ public class SachbearbeiterS {
 			adminMode = true;
 		else
 			throw new Exception("Admin mode kann nicht eingeschaltet werden. Fehlende Berechtigung");
+		
+		System.out.println("Admin mode switched on");
 	}
 	
 	
@@ -77,6 +79,7 @@ public class SachbearbeiterS {
 	public boolean isAdminLoggedIn(){
 		
 		//return ((sba != null) && sba.getRole().equals("admin")) ? true : false;//returns true if sba not null and sba.role == admin
+		
 		return ((sba != null) && adminMode == true) ? true : false;//returns true if sba not null and adminMode ein
 	}
 	

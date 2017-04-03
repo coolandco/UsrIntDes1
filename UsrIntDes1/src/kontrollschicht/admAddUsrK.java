@@ -40,15 +40,18 @@ public class admAddUsrK {
 			if(SachbearbeiterS.getInstance().EKexists(name))
 				throw new Exception("Der benutzer mit dem eingegebenen Benutzernamen existiert schon");
 			
-			if(checkUsername() == false)
+			if(stringChecks.checkName(name) == false)
 				throw new Exception("Der eingegebene Benutzername kann nicht benutzt werden");
 			
-			if(checkPassword() == false)
+			if(stringChecks.checkPassword(passwort) == false)
 				throw new Exception("Das eingegebene Passwort kann nicht benutzt werden");
 			
 		
 		} catch (Exception e) {
-			//TODO: tidy up?
+			name = null;
+			passwort = null;
+			adminMode = false;
+			//TODO: tidy more up?
 			throw e; //but do not handle the exeption
 		}
 		
@@ -61,18 +64,5 @@ public class admAddUsrK {
 			
 	}
 	
-	
-
-
-	private boolean checkPassword() {
-		// TODO not implemented
-		return true;
-	}
-
-
-	private boolean checkUsername() {
-		// TODO not implemented
-		return true;
-	}
 
 }

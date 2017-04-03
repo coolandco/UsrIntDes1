@@ -1,7 +1,6 @@
 package kontrollschicht;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import entityClass.Sachbearbeiter;
 
 public class chooseUsrK {
@@ -40,10 +39,11 @@ public class chooseUsrK {
 			
 			Sachbearbeiter sachb = Sachbearbeiter.get(s);
 			
-			if(sachb == null || ! sachb.getRole().equals("admin")) //if not found or not admin
+			if(sachb == null || ! (sachb.getRole().equals("admin"))) //if not found or not admin
 				continue;
-			else
+			else {
 				admins.add(sachb.getName());
+			}
 				
 		}
 		

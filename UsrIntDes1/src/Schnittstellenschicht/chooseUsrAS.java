@@ -45,7 +45,8 @@ public class chooseUsrAS extends consoleHandler {
 			ArrayList<String> admins = kontrolle.getAdminNames();
 			
 			for(String s : kontrolle.getPossibleUserNames()) {//print all user names
-				if(markAdmins || admins.contains(s))//marks the addmins
+				
+				if(markAdmins && admins.contains(s))//marks the addmins
 					System.out.println(s + "*");
 				else
 					System.out.println(s);

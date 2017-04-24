@@ -1,14 +1,22 @@
 package Schnittstellenschicht.gui;
 
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-public class LoginAAS {
+import kontrollschicht.LoginK;
+import kontrollschicht.SachbearbeiterS;
+
+public class LoginAAS implements backHandler {
 	
 	//################################################
 		//Singelton Pattern
@@ -28,24 +36,34 @@ public class LoginAAS {
 	    }
 	   //################################################
 
-	    
+	    LoginK kontrolle;
+
+	    private JButton btnLogin;
+	    private JButton btnBeenden;
 		private JTextField txtName;
 		private JTextField txtPasswort;
+	    private JRadioButton rdbtnAdmin;
+	    private JRadioButton rdbtnSachbearbeiter;
 	    
 	    
 	    public void öffnen() {
-	    	
-	    	JPanel panels[] = StartHS.getInstance().resetPanel();//get the set up content panels
+	    	//Set up
+	    	kontrolle = new LoginK();
+	    	JPanel panels[] = StartHS.getInstance().getPanels();//get the set up content panels
 	    			
 			
 			//now we can add stuff like buttons
 			
 			//row 1
-			JButton btnBeenden = new JButton("Beenden");
+	    	btnBeenden = new JButton("Beenden");
 			panels[0].add(btnBeenden);
 			
-			JButton btnLogin = new JButton("Login");
+			
+			
+			btnLogin = new JButton("Login");
 			panels[0].add(btnLogin);
+			
+			
 			
 			//row 2
 			txtName = new JTextField();
@@ -59,11 +77,101 @@ public class LoginAAS {
 			panels[2].add(txtPasswort);
 			txtPasswort.setColumns(10);
 			
+			
+			
 			//row 4
-			JRadioButton rdbtnSachbearbeiter = new JRadioButton("Sachbearbeiter");
+			rdbtnSachbearbeiter = new JRadioButton("Sachbearbeiter");
 			panels[3].add(rdbtnSachbearbeiter);
 			
-			JRadioButton rdbtnAdmin = new JRadioButton("Admin");
+			rdbtnAdmin = new JRadioButton("Admin");
 			panels[3].add(rdbtnAdmin);
+			
+			ButtonGroup rdbtnGrp = new ButtonGroup();
+			rdbtnGrp.add(rdbtnSachbearbeiter);
+			rdbtnGrp.add(rdbtnAdmin);
+			
+			
+			
+			
+			//Action Listeners
+			btnBeenden.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					schließen();
+					
+				}
+				
+			});
+			
+			
+			btnLogin.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						führeLoginDurch();
+				}
+			});
+			
+			
+			
+			
+			//finish
+			StartHS.getInstance().pack();
+			
 	    }
+	    
+
+
+		protected void führeLoginDurch() {
+			//TODO: Do some checks
+			
+			//give login details to kontrolle
+			kontrolle.enterName(txtName.getText());
+			kontrolle.enterPassword(txtPasswort.getText());
+			if(rdbtnAdmin.isSelected())
+				kontrolle.cooseAdmin("y");//TODO not good in kontrollschicht
+			else
+				kontrolle.cooseAdmin("n");
+			
+			
+			//try to login
+			try {
+				kontrolle.führeLoginDurch();
+				
+				schließen();//returns to StartHS
+				return;
+				
+			} catch (Exception e) {
+				//handle if login fails
+				JOptionPane.showMessageDialog(null,
+					    e.getMessage(),
+					    "Login error",
+					    JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		
+
+		private void schließen() {
+			//reset this instance and point back to the startHS to zurück();
+			kontrolle = null;
+			removeInstance();
+			StartHS.getInstance().resetPanel();
+			
+			//go back for some reason
+			SwingUtilities.invokeLater(new Runnable() {
+			    public void run() {
+			        StartHS.getInstance().zurück();
+			    }
+			});
+			
+		}
+		
+		
+		@Override
+		public void zurück() {
+			öffnen();
+			
+		}
 }

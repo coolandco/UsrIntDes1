@@ -90,7 +90,7 @@ public class sbaAS {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					//check if user has been choosen and open changeUserAS
+					//check if user has been choosen and open changeUserAS 
 			}
 		});
 		

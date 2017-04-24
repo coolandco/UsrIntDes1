@@ -19,6 +19,7 @@ public class LoginK {
 	
 	public void enterPassword(String pw){
 
+		//testcomment
 		this.passwort = pw;
 	}
 	

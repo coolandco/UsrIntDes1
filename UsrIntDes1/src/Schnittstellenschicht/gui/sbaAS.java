@@ -1,5 +1,6 @@
 package Schnittstellenschicht.gui;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +11,7 @@ import javax.swing.SwingUtilities;
 import kontrollschicht.SachbearbeiterS;
 
 
-public class sbaAS {
+public class sbaAS implements backHandler {
 	
 	//################################################
 	//Singelton Pattern
@@ -59,9 +60,11 @@ public class sbaAS {
 		//row 2
 		
 		//remove those panels to extend later panel[1]
+		//Adjust Layout
 		panels[1].getParent().remove(panels[2]);
 		panels[1].getParent().remove(panels[3]);
 		panels[1].getParent().remove(panels[4]);
+		StartHS.getInstance().getContentPane().setLayout(new GridLayout(2, 1, 5, 5));
 		
 		//panels[1] should be 1 big panel now
 		//panels[1].setSize(panels[1].getWidth() ,  panels[1].getHeight() * 4); //TODO: doesnt work
@@ -90,7 +93,9 @@ public class sbaAS {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					//check if user has been choosen and open changeUserAS 
+				//check if user has been choosen and open changeUserAS 
+				if(chooseUsrAS.getInstance().getChoosenUser() != null)
+					changeUsrAS.getInstance().öffnen();
 			}
 		});
 		
@@ -119,6 +124,12 @@ public class sbaAS {
 		        LoginAAS.getInstance().zurück();
 		    }
 		});
+		
+	}
+
+	@Override
+	public void zurück() {
+		öffnen();
 		
 	}
     

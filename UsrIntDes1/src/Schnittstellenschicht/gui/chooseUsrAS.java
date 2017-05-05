@@ -1,6 +1,8 @@
 package Schnittstellenschicht.gui;
 
 
+import java.awt.Dimension;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -35,6 +37,8 @@ public class chooseUsrAS {
 	    private JScrollPane pane;
 	    
 	    
+	    
+	    
 	    public void öffnen(){
 			kontrolle = new chooseUsrK();
 			
@@ -43,6 +47,9 @@ public class chooseUsrAS {
 			model = new DefaultListModel<String>();
 			list = new JList<String>(model);
 			pane = new JScrollPane(list);
+			
+			list.setMinimumSize(new Dimension(150, 400));
+			pane.setMinimumSize(new Dimension(150, 400));
 			
 			
 			for(String user : kontrolle.getPossibleUserNames()){
@@ -56,5 +63,11 @@ public class chooseUsrAS {
 	    	
 	    	return pane;
 	    }
+	    
+	    //returns the currently choosen user
+		public String getChoosenUser() {
+			
+			return list.getSelectedValue();
+		}
 	
 }

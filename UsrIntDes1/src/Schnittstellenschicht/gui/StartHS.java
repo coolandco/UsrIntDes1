@@ -125,6 +125,33 @@ public class StartHS extends JFrame implements backHandler {
 		return panels.toArray(new JPanel[5]);
 	}
 	
+	
+	public JPanel[] getPanels_two() {
+		ArrayList<JPanel> panels = new ArrayList<JPanel>();
+		
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(5, 1, 5, 5));
+		
+		
+		//set up the panels as a 1-column-grid-layout filled with box grid layouts
+		JPanel panel_0 = new JPanel();
+		contentPane.add(panel_0);
+		panel_0.setLayout(new BoxLayout(panel_0, BoxLayout.X_AXIS));
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
+		
+		
+		panels.add(panel_0);
+		panels.add(panel_1);
+		
+		return panels.toArray(new JPanel[2]);
+	}
+	
 	public void resetPanel(){
 		//TODO: maybe better possibillity to reset panel
 		contentPane = new JPanel();

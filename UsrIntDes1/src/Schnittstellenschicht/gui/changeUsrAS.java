@@ -2,6 +2,8 @@ package Schnittstellenschicht.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -72,6 +74,7 @@ public class changeUsrAS {
 			txtName.setText(usr);
 			panels[1].add(txtName);
 			txtName.setColumns(10);
+			txtName.requestFocus();
 			
 			//row 3
 			txtPasswort = new JTextField();
@@ -122,6 +125,40 @@ public class changeUsrAS {
 				}
 				
 			});
+	    	
+	    	KeyListener kl = new KeyListener() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					
+					System.out.println(e);
+					
+					if(e.getKeyCode() == KeyEvent.VK_S && e.isControlDown()){
+						btnSpeichern.doClick();
+												
+					} else if(e.getKeyCode() == KeyEvent.VK_B && e.isControlDown()){
+						btnZurück.doClick();
+												
+					}	
+					
+				}
+
+				@Override
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	    		
+	    	};
+	    	
+	    	txtName.addKeyListener(kl);
+	    	txtPasswort.addKeyListener(kl);
+	    	
 	    	
 			//finish
 			StartHS.getInstance().pack();

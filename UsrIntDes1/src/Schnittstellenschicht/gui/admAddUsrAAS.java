@@ -65,6 +65,7 @@ public class admAddUsrAAS {
 			txtName.setText("name");
 			panels[1].add(txtName);
 			txtName.setColumns(10);
+			txtName.requestFocus();
 			
 			//row 3
 			txtPasswort = new JTextField();

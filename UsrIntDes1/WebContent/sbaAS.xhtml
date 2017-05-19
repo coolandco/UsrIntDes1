@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title> Editieren </title>
+</h:head>
+<body>
+
+	<h:commandButton value = "Bearbeiten" action= "#{sbaAS.bearbeiten}" />
+	<h:commandButton value = "Abmelden" action = "#{sbaAS.abmelden}" />
+	
+	<h:selectOneListbox value="#{sbaAS.user}" required="true" label="Users" requiredMessage="input is Missing!">
+		<f:selectItems value="#{sbaAS.users}" />
+	</h:selectOneListbox>
+	
+</body>
+</html>

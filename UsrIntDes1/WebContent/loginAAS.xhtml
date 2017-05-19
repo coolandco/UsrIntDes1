@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title> hi </title>
+</h:head>
+<body>
+	<h:form>
+		<h:inputText value = "#{loginAAS.name}" />
+		<h:inputText value = "#{loginAAS.passwort}" />
+		
+		<h:commandButton value = "Login" action="ok" onclick = "loginAAS.login;" />
+		<h:commandButton value = "Beenden" onclick = "alert('Hello World!');" />
+	</h:form>
+</body>
+</html>

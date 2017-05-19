@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title> peset </title>
+</h:head>
+<body>
+	<ui:composition>
+		<h:form id="frmCreds">			
+			<h:inputText value = "#{name}"/>
+			<h:inputText value = "#{passwort}" />
+			
+			<h:selectOneRadio value="#{choosenValue}">
+				<f:selectItem itemValue = "1" itemLabel = "Sachbearbeiter" />
+				<f:selectItem itemValue = "2" itemLabel = "Admin" />
+			</h:selectOneRadio>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

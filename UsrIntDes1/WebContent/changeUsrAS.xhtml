@@ -1,16 +1,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html">
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title> hi </title>
+	<title> changeUsr </title>
 </h:head>
 <body>
-	<h:form>
-		<h:inputText value = "#{loginAAS.name}" />
-		<h:inputText value = "#{loginAAS.passwort}" />
+
+	<f:metadata>
+	    <f:viewParam id="user" value="#{changeUsrAS.choosenUser}" />
+	</f:metadata>
+	
+	<h:commandButton value = "speichern" action = "#{changeUsrAS.speichern}" />
+	<h:commandButton value = "zurück" action = "#{changeUsrAS.zuruek}" />
 		
-		<h:commandButton value = "Login" action="ok" onclick = "loginAAS.login;" />
-		<h:commandButton value = "Beenden" onclick = "alert('Hello World!');" />
-	</h:form>
+	<ui:include src="/formPreset.xhtml">
+			<ui:param name="name" value="#{changeUsrAS.name}"></ui:param>
+			<ui:param name="passwort" value="#{changeUsrAS.passwort}"></ui:param>
+			<ui:param name="choosenValue" value="#{changeUsrAS.choosenRole}"></ui:param>
+	</ui:include>
+	
+	<h:messages style = "color:red;margin:8px;" /> 
 </body>
 </html>

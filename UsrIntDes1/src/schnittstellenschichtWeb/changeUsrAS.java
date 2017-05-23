@@ -24,8 +24,12 @@ public class changeUsrAS {
 	private changeUsrK kontrolle;
 	
 
-	@ManagedProperty(value = "#{admAS.choosenUser}")
+	@ManagedProperty(value = "#{sbaAS.choosenUser}")
     private String choosenUser;
+	
+	@ManagedProperty(value = "#{admAS.choosenUser}")
+    private String choosenUserAdm;
+	
 	
 	public String speichern(){
 		
@@ -114,6 +118,21 @@ public class changeUsrAS {
 
 	}
 	
+	public String getChoosenUserAdm() {
+		return choosenUser;
+	}
+
+
+
+	public void setChoosenUserAdm(String user) {
+		this.choosenUserAdm = user;
+		choosenUser = user;
+		setChoosenUser(user);
+				
+	}
+
+
+
 	public String getName() {
 		
 		return name;

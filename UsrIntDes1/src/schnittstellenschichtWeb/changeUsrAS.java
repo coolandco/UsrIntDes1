@@ -1,19 +1,31 @@
 package schnittstellenschichtWeb;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import kontrollschicht.SachbearbeiterS;
 import kontrollschicht.changeUsrK;
 
+
+@ManagedBean
+@RequestScoped
 public class changeUsrAS {
 	
-	private String choosenUser;
+	//private String choosenUser;
 	
 	private String name;
 	private String passwort;
 	private String choosenRole;
 	
 	private changeUsrK kontrolle;
+	
+
+	@ManagedProperty(value = "#{admAS.choosenUser}")
+    private String choosenUser;
 	
 	public String speichern(){
 		
@@ -36,29 +48,48 @@ public class changeUsrAS {
 			return null;
 		}
 		
-		
-		return "/sbaAS.xhtml";
+		return zurueck();
 		
 	}
 	
+
+
 	public String zurueck(){
 	
-		return "/sbaAS.xhtml";
+		schließen();
+		
+		if(SachbearbeiterS.getInstance().isAdminLoggedIn())
+			return "/admAS.xhtml";
+    	else
+    		return "/sbaAS.xhtml";
+		
 	}
 	
+	//zurücksetzen der props
+	private void schließen() {
+		name = null;
+		passwort = null;
+		choosenRole = null;
+		
+		kontrolle = null;
+		
+	}
 	
 	
 	public String getChoosenUser() {
 		return choosenUser;
 	}
 	
-	public void setChoosenUser(String choosenUser) {
-		//this is the first mehrode that is been called
+	
+	public void setChoosenUser(String user) {
+		//this is the first methode that is been called
+		System.out.println("methode Set choosen user mit: " + user);
 		
-		this.choosenUser = choosenUser;
+		
+		this.choosenUser = user;
 		
 		kontrolle = new changeUsrK();
-		kontrolle.setUser(choosenUser);
+		kontrolle.setUser(user);
 		
 		try {
 			name = kontrolle.getCurrentName();
@@ -84,6 +115,7 @@ public class changeUsrAS {
 	}
 	
 	public String getName() {
+		
 		return name;
 	}
 	public void setName(String name) {

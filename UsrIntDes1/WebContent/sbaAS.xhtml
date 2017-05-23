@@ -6,15 +6,22 @@ xmlns:f="http://java.sun.com/jsf/core">
 	<title> Editieren </title>
 </h:head>
 <body>
-
-	<h:commandButton value = "Bearbeiten" action= "#{sbaAS.bearbeiten}" />
-	<h:commandButton value = "Abmelden" action = "#{sbaAS.abmelden}" />
+ 	<h:form>
+		<h:commandButton value = "Bearbeiten" action= "#{sbaAS.bearbeiten}" />
+		
+		<h:commandButton value = "Abmelden" action = "#{sbaAS.abmelden}" />
+		
+		
+		
+		
+		<h:selectOneListbox value="#{sbaAS.user}" label="Users" required="true" requiredMessage="missingInput">
+			<f:selectItems value="#{sbaAS.users}" />
+			<f:param id = "choosenUserID" name="choosenUserName" value="#{sbaAS.choosenUser}" />
+		</h:selectOneListbox>
+		
+		<h:messages style = "color:red;margin:8px;" /> 
 	
-	<h:selectOneListbox value="#{sbaAS.user}" required="true" label="Users" requiredMessage="input is Missing!">
-		<f:selectItems value="#{sbaAS.users}" />
-	</h:selectOneListbox>
-	
-	<h:messages style = "color:red;margin:8px;" /> 
+	</h:form>
 	
 </body>
 </html>

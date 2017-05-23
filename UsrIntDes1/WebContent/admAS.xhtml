@@ -1,16 +1,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html">
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title> hi </title>
+	<title> Editieren </title>
 </h:head>
 <body>
-	<h:form>
-		<h:inputText value = "#{loginAAS.name}" />
-		<h:inputText value = "#{loginAAS.passwort}" />
+ 	<h:form>
+		<h:commandButton value = "Bearbeiten" action= "#{admAS.bearbeiten}" />
+		<h:commandButton value = "addNewUser" action= "#{admAS.addNewUser}" />
+		<h:commandButton value = "deleteUser" action= "#{admAS.deleteUser}" />
 		
-		<h:commandButton value = "Login" action="ok" onclick = "loginAAS.login;" />
-		<h:commandButton value = "Beenden" onclick = "alert('Hello World!');" />
+		<h:commandButton value = "Abmelden" action = "#{admAS.abmelden}" />
+		
+		
+		
+		
+		<h:selectOneListbox value="#{admAS.user}" label="Users" required="true" requiredMessage="missingInput">
+			<f:selectItems value="#{admAS.users}" />
+			<f:param id = "choosenUserID" name="choosenUserName" value="#{admAS.choosenUser}" />
+		</h:selectOneListbox>
+		
+		<h:messages style = "color:red;margin:8px;" /> 
+	
 	</h:form>
+	
 </body>
 </html>

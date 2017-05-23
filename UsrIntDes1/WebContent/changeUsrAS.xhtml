@@ -8,19 +8,17 @@ xmlns:f="http://java.sun.com/jsf/core">
 </h:head>
 <body>
 
-	<f:metadata>
-	    <f:viewParam id="user" value="#{changeUsrAS.choosenUser}" />
-	</f:metadata>
+	<h:form>
 	
-	<h:commandButton value = "speichern" action = "#{changeUsrAS.speichern}" />
-	<h:commandButton value = "zurück" action = "#{changeUsrAS.zuruek}" />
-		
-	<ui:include src="/formPreset.xhtml">
-			<ui:param name="name" value="#{changeUsrAS.name}"></ui:param>
-			<ui:param name="passwort" value="#{changeUsrAS.passwort}"></ui:param>
-			<ui:param name="choosenValue" value="#{changeUsrAS.choosenRole}"></ui:param>
-	</ui:include>
-	
+		<h:commandButton value = "speichern" action = "#{changeUsrAS.speichern}" />
+		<h:commandButton value = "zurück" action = "#{changeUsrAS.zurueck}" />
+			
+		<ui:include src="/formPreset.xhtml">
+				<ui:param name="name" value="#{changeUsrAS.name}"></ui:param>
+				<ui:param name="passwort" value="#{changeUsrAS.passwort}"></ui:param>
+				<ui:param name="choosenValue" value="#{changeUsrAS.choosenRole}"></ui:param>
+		</ui:include>
+	</h:form>
 	<h:messages style = "color:red;margin:8px;" /> 
 </body>
 </html>

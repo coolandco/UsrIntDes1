@@ -1,62 +1,96 @@
 package schnittstellenschichtWeb;
 
+import java.util.ArrayList;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import kontrollschicht.SachbearbeiterS;
 import kontrollschicht.chooseUsrK;
 
+@ManagedBean
+@SessionScoped
+
 public class sbaAS {
 	
-	private String user = "";
+	
+	protected String user = "";
+	protected String choosenUser = "";
 	
 	
 	public String bearbeiten(){
-		System.out.println("1");
+
+		if(chooseUsrOperations())
+			return "/changeUsrAS.xhtml"; 
+		else
+			return null;//s.t. went wrong	
+
+	}
+	
+	
+	//this has to be called bevore new page for a choosen user openes
+	//then there needs to be a managedproperty on "choosenUser"
+	protected boolean chooseUsrOperations(){
+		
 		if(user.equals("")){
 			FacesContext.getCurrentInstance().addMessage("frmCreds", new FacesMessage(
 					"Es wurde kein benutzer ausgew‰hlt"));
-			System.out.println("2");
-			return null;
+			return false;
 		} 
 		
 		chooseUsrK kontrolle = new chooseUsrK();
-		System.out.println("3");
+
 		try {
 			kontrolle.chooseUser(user);
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage("frmCreds", new FacesMessage(
 					e.getMessage()));
-			return null;
+			return false;
 		}
-		System.out.println("4");
 		
-		return "/changeUsrAS.xhtml?user=" + user;
-		
-		
-		
+		return true;
 	}
+	
 
 	public String abmelden(){
-		return null;
 		
+		SachbearbeiterS.removeInstance();
+		schlieﬂen();
+		
+		return "/loginAAS.xhtml";
+		
+	}
+	
+	protected void schlieﬂen() {
+		user = "";
+		choosenUser = "";
+				
 	}
 	
 	
 	
 
 	public String getUser() {//for jsf
-		System.out.println("5");
+
 		return new chooseUsrK().getPossibleUserNames()[0]; // null pointer can happen
+	}
+	
+	public String getChoosenUser() {
+		System.out.println("user get: " + user);
+		return user;
 	}
 
 	public void setUser(String user) {
-		System.out.println("7");
+		System.out.println("user set: " + user);
 		this.user = user;
 	}
 
 	public String[] getUsers() {
-		System.out.println("6");
+
 		return new chooseUsrK().getPossibleUserNames();
 	}
 }

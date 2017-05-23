@@ -19,6 +19,8 @@ import kontrollschicht.chooseUsrK;
 public class admAS extends sbaAS{
 	
 	
+	
+	
 //	private String user = "";
 //	private String choosenUser = "";
 	
@@ -42,9 +44,10 @@ public class admAS extends sbaAS{
 //		
 //	}
 	
+	private String choosenUserAdm = "";
+	
 
-	
-	
+
 	public String addNewUser(){
 		
 		return "/admAddUsrAAS.xhtml";
@@ -59,6 +62,16 @@ public class admAS extends sbaAS{
 			return null;//s.t. went wrong	
 	}
 	
+	
+	public String getChoosenUserAdm() {
+		return choosenUserAdm;
+	}
+
+
+	public void setChoosenUserAdm(String choosenUserAdm) {
+		this.choosenUserAdm = choosenUserAdm;
+		super.choosenUser = choosenUserAdm;//maybe that fixes the problem
+	}
 	
 	//this has to be called bevore new page for a choosen user openes
 	//then there needs to be a managedproperty on "choosenUser"

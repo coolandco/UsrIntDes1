@@ -51,12 +51,22 @@ public class admAddUsrAAS {
 	
 	
 	public String zurueck(){
+		schlieﬂen();
+		
 		
 		//goto page bevore
 		if (SachbearbeiterS.getInstance().isAdminLoggedIn())//admin
-			return "/sbaAS.xhtml";
-		else
 			return "/admAS.xhtml";
+		else
+			return "/sbaAS.xhtml";
+	}
+	
+	private void schlieﬂen(){
+		name = null;
+		passwort = null;
+		choosenRole = null;
+		
+		kontrolle = null;
 	}
 
 

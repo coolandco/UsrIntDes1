@@ -14,7 +14,7 @@ import kontrollschicht.admDelUsrK;
 
 public class admDelUsrAAS {
 
-	@ManagedProperty(value = "#{admAS.choosenUser}")
+	@ManagedProperty(value = "#{admAS.userTrans}")
     private String choosenUser;
 	
 	private admDelUsrK kontrolle;
@@ -40,24 +40,22 @@ public class admDelUsrAAS {
 		
 		return "/admAS.xhtml";
 	}
-
-
-
-	public String getChoosenUser() {
-		return choosenUser;
-	}
 	
 	
 	public void setChoosenUser(String user) {
 		//this is the first methode that is been called
 		System.out.println("methode Set choosen user mit: " + user);
 		
-		
-		this.choosenUser = user;
+		choosenUser = user;
 		
 		kontrolle = new admDelUsrK();
 		kontrolle.enterName(user);
 		
+	}
+	
+	
+	public String getChoosenUser() {
+		return choosenUser;
 	}
 	
 }

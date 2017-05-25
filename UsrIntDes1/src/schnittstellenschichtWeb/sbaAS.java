@@ -19,7 +19,7 @@ public class sbaAS {
 	
 	
 	protected String user = "";
-	protected String choosenUser = "";
+	protected String userTrans = "";
 	
 	
 	public String bearbeiten(){
@@ -67,7 +67,6 @@ public class sbaAS {
 	
 	protected void schlieﬂen() {
 		user = "";
-		choosenUser = "";
 				
 	}
 	
@@ -79,14 +78,15 @@ public class sbaAS {
 		return new chooseUsrK().getPossibleUserNames()[0]; // null pointer can happen
 	}
 	
-	public String getChoosenUser() {
-		System.out.println("user get: " + user);
-		return user;
+	public String getUserTrans(){
+		return userTrans;
 	}
+	
 
 	public void setUser(String user) {
 		System.out.println("user set: " + user);
 		this.user = user;
+		userTrans = user; //for transfer
 	}
 
 	public String[] getUsers() {

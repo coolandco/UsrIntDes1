@@ -22,13 +22,11 @@ public class changeUsrAS {
 	private String choosenRole;
 	
 	private changeUsrK kontrolle;
+		
 	
-
-	@ManagedProperty(value = "#{sbaAS.choosenUser}")
-    private String choosenUser;
+	@ManagedProperty(value = "#{sbaAS.userTrans}")
+    private String userSba;
 	
-	@ManagedProperty(value = "#{admAS.choosenUser}")
-    private String choosenUserAdm;
 	
 	
 	public String speichern(){
@@ -80,17 +78,10 @@ public class changeUsrAS {
 	}
 	
 	
-	public String getChoosenUser() {
-		return choosenUser;
-	}
-	
-	
-	public void setChoosenUser(String user) {
+	private void kontrolleUser(String user) {
 		//this is the first methode that is been called
 		System.out.println("methode Set choosen user mit: " + user);
 		
-		
-		this.choosenUser = user;
 		
 		kontrolle = new changeUsrK();
 		kontrolle.setUser(user);
@@ -115,21 +106,27 @@ public class changeUsrAS {
 			FacesContext.getCurrentInstance().addMessage("frmCreds", new FacesMessage(
 					e.getMessage()));
 		}
+		
+	}
+
+	
+
+	public void setUserSba(String user) {
+		
+		if(user != null && !user.equals(""))
+			kontrolleUser(user);
+		else
+			kontrolleUser("");
 
 	}
 	
-	public String getChoosenUserAdm() {
-		return choosenUser;
-	}
-
-
-
-	public void setChoosenUserAdm(String user) {
-		this.choosenUserAdm = user;
-		choosenUser = user;
-		setChoosenUser(user);
-				
-	}
+//	public void setUserAdm(String user){
+//		
+//		if(user != null && !user.equals(""))
+//			kontrolleUser(user);
+//		else
+//			kontrolleUser("");
+//	}
 
 
 

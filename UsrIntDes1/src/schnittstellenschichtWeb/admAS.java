@@ -44,7 +44,7 @@ public class admAS extends sbaAS{
 //		
 //	}
 	
-	private String choosenUserAdm = "";
+//	private String choosenUserAdm = "";
 	
 
 
@@ -63,15 +63,16 @@ public class admAS extends sbaAS{
 	}
 	
 	
-	public String getChoosenUserAdm() {
-		return choosenUserAdm;
-	}
-
-
-	public void setChoosenUserAdm(String choosenUserAdm) {
-		this.choosenUserAdm = choosenUserAdm;
-		super.choosenUser = choosenUserAdm;//maybe that fixes the problem
-	}
+	
+//	public String getChoosenUserAdm() {
+//		return choosenUserAdm;
+//	}
+//
+//
+//	public void setChoosenUserAdm(String choosenUserAdm) {
+//		this.choosenUserAdm = choosenUserAdm;
+//		super.choosenUser = choosenUserAdm;//maybe that fixes the problem
+//	}
 	
 	//this has to be called bevore new page for a choosen user openes
 	//then there needs to be a managedproperty on "choosenUser"

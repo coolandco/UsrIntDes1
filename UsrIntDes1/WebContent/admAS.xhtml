@@ -7,22 +7,26 @@ xmlns:f="http://java.sun.com/jsf/core">
 </h:head>
 <body>
  	<h:form>
-		<h:commandButton value = "Bearbeiten" action= "#{admAS.bearbeiten}" />
-		<h:commandButton value = "addNewUser" action= "#{admAS.addNewUser}" />
-		<h:commandButton value = "deleteUser" action= "#{admAS.deleteUser}" />
+		<h:panelGrid id = "panel" columns = "2" border = "1"
+      		cellpadding = "10" cellspacing = "1">
+
+			<h:commandButton value = "Bearbeiten" action= "#{admAS.bearbeiten}" />
+			<h:commandButton value = "addNewUser" action= "#{admAS.addNewUser}" />
+			<h:commandButton value = "deleteUser" action= "#{admAS.deleteUser}" />
+			
+			<h:commandButton value = "Abmelden" action = "#{admAS.abmelden}" />
+			
+			
+			
+			
+			<h:selectOneListbox value="#{admAS.user}" label="Users" required="true" requiredMessage="missingInput">
+				<f:selectItems value="#{admAS.users}" />
+			</h:selectOneListbox>
+			
+			<h:messages style = "color:red;margin:8px;" /> 
 		
-		<h:commandButton value = "Abmelden" action = "#{admAS.abmelden}" />
 		
-		
-		
-		
-		<h:selectOneListbox value="#{admAS.user}" label="Users" required="true" requiredMessage="missingInput">
-			<f:selectItems value="#{admAS.users}" />
-			<f:param id = "choosenUserID" name="choosenUserName" value="#{admAS.choosenUser}" />
-		</h:selectOneListbox>
-		
-		<h:messages style = "color:red;margin:8px;" /> 
-	
+		</h:panelGrid>
 	</h:form>
 	
 </body>

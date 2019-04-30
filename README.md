@@ -4,13 +4,16 @@ First experiences with UI and Git in sixt semester. This is a scenario where man
 
 Goal was, to write a control layer between the database and the UI **once** and then reuse it with differen UI scenarios.
 
-Branches:
+Logins:
+Sachbearbeiter role: leo PW: abc
+Admin/Sachbearbeiter role: kevin PW: 123
 
-- master:
+
+- Schnittstellenschicht:
   plain comando line implementation
-- aufgabenblatt 2:
+- SchnittstellenschichtGui:
   gui implementation
-- aufgabenblatt 3:
+- SchnittstellenschichtWeb:
   web implementation
   
-To run, start the "StartHS" class.
+To run, start the "StartHS" class in each folder. Web implementation currently broken without tomcat webserver.

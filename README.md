@@ -6,11 +6,11 @@ Goal was, to write a control layer between the database and the UI **once** and 
 
 Branches:
 
-- master
+- master:
   plain comando line implementation
-- aufgabenblatt 2
+- aufgabenblatt 2:
   gui implementation
-- aufgabenblatt 3
+- aufgabenblatt 3:
   web implementation
   
 To run, start the "StartHS" class.

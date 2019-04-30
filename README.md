@@ -5,8 +5,8 @@ First experiences with UI and Git in sixt semester. This is a scenario where man
 Goal was, to write a control layer between the database and the UI **once** and then reuse it with differen UI scenarios.
 
 Logins:
-Sachbearbeiter role: leo PW: abc
-Admin/Sachbearbeiter role: kevin PW: 123
+- Sachbearbeiter role: leo PW: abc
+- Admin/Sachbearbeiter role: kevin PW: 123
 
 
 - Schnittstellenschicht:

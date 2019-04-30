@@ -1,4 +1,4 @@
-package Schnittstellenschicht.gui;
+package SchnittstellenschichtGui;
 
 public interface backHandler {
 	
